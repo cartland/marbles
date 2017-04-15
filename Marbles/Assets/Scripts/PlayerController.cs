@@ -19,4 +19,10 @@ public class PlayerController : MonoBehaviour {
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f,  moveVertical);
 		player.AddForce (movement * forceMagnitude);
 	}
+
+	void OnTriggerEnter(Collider other) {
+		if (other.gameObject.CompareTag ("Pick Up")) {
+			other.gameObject.SetActive (false);
+		}
+	}
 }
