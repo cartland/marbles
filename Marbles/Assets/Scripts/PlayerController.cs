@@ -10,10 +10,14 @@ public class PlayerController : MonoBehaviour {
 	public Text winText;
 
 	private Rigidbody player;
+	private Vector3 initPosition;
+	private Quaternion initRotation;
 	private int count;
 
 	void Start() {
 		player = GetComponent<Rigidbody> ();
+		initPosition = player.transform.position;
+		initRotation = player.transform.rotation;
 		count = 0;
 		UpdateCountText ();
 		winText.text = "";
@@ -32,6 +36,8 @@ public class PlayerController : MonoBehaviour {
 			other.gameObject.SetActive (false);
 			count++;
 			UpdateCountText ();
+		} else if (other.gameObject.CompareTag ("Wall")) {
+			player.transform.SetPositionAndRotation (initPosition, initRotation);
 		}
 	}
 
