@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour {
 			UpdateCountText ();
 		} else if (other.gameObject.CompareTag ("Wall")) {
 			player.transform.SetPositionAndRotation (initPosition, initRotation);
+			player.velocity = new Vector3 (0.0f, 0.0f, 0.0f);
 		}
 	}
 
